@@ -5,6 +5,8 @@ lazy val scalaTestVersion = "3.2.2"
 lazy val mockitoVersion = "3.2.2.0"
 lazy val pureConfigVersion = "0.15.0"
 lazy val newTypeVersion = "0.4.4"
+lazy val tapirVersion = "0.18.0-M11"
+lazy val logbackVersion = "1.2.3"
 
 lazy val catsDependencies = Seq(
   "org.typelevel" %% "cats-core" % catsVersion,
@@ -40,6 +42,21 @@ lazy val newTypeDependencies = Seq(
   "io.estatico" %% "newtype" % newTypeVersion
 )
 
+lazy val tapirDependencies = Seq(
+  "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-openapi-docs" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-openapi-circe-yaml" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-http4s" % tapirVersion,
+  "com.softwaremill.sttp.tapir" %% "tapir-newtype" % tapirVersion
+)
+
+lazy val loggerDependencies = Seq(
+  "ch.qos.logback" % "logback-classic" % logbackVersion,
+  "ch.qos.logback" % "logback-core" % logbackVersion
+)
+
 lazy val root = (project in file("."))
   .settings(
     name := "http4s-skeleton",
@@ -54,4 +71,6 @@ lazy val root = (project in file("."))
       ++ mockitoDependencies
       ++ pureConfigDependencies
       ++ newTypeDependencies
+      ++ tapirDependencies
+      ++ loggerDependencies
   )
